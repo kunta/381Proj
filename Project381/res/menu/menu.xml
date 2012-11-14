@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item android:id = "@+id/file" android:title="File"
+        android:showAsAction="always" >
+        
+        <menu> 
+
+            <item android:id="@+id/new_file" android:title="New..."
+            	      	android:showAsAction="always" />
+
+            <item android:id="@+id/open" android:title="Open..." 
+                	android:showAsAction="always"/>
+            <item android:id="@+id/save" android:title="Save..."
+                	android:showAsAction="always" />
+            <item android:id="@+id/save_as" android:title="Save As..."
+                	android:showAsAction="always" />
+            <item android:id="@+id/save_all" android:title="Save All..."
+                	android:showAsAction="always" />		        
+       </menu>
+        
+    </item>    
+    
+    <item android:id="@+id/delete" android:title="Edit"
+         android:showAsAction="always"/>
+    
+    <item android:id="@+id/view" android:title="View"
+         android:showAsAction="always" >
+        <menu> 
+                <item android:id="@+id/numbers" android:title="Show Line Numbers..." >    	
+                </item>
+		</menu>
+	</item>	
+    
+    <item android:id="@+id/help" android:title="Help"
+         android:showAsAction="always"/>
+</menu>
