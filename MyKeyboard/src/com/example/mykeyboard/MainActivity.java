@@ -70,55 +70,51 @@ public class MainActivity extends Activity implements OnKeyboardActionListener, 
           }
 
 
-	@Override
 	public boolean onKey(View v, int keyCode, KeyEvent event) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
+	
 	public void onKey(int primaryCode, int[] keyCodes) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+	
 	public void onPress(int primaryCode) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+	
 	public void onRelease(int primaryCode) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+	
 	public void onText(CharSequence text) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+	
 	public void swipeDown() {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void swipeLeft() {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void swipeRight() {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void swipeUp() {
 		// TODO Auto-generated method stub
 		
