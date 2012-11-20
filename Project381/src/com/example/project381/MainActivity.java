@@ -1,12 +1,16 @@
 package com.example.project381;
 
+import android.inputmethodservice.Keyboard;
+import android.inputmethodservice.KeyboardView;
 import android.os.Bundle;
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Context;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
@@ -39,6 +43,17 @@ public class MainActivity extends Activity {
         ActionBar aBar = getActionBar();
         aBar.setDisplayShowTitleEnabled(false);
         aBar.setDisplayShowHomeEnabled(false);
+        
+        KeyboardView keyboardView = (KeyboardView) findViewById(R.id.keyboardView);
+        Keyboard keyboard = new Keyboard(this, R.xml.keyboard);
+        keyboardView.setKeyboard(keyboard);
+        keyboardView.setEnabled(true);
+        keyboardView.setPreviewEnabled(true);
+        KeyboardListener kbl = new KeyboardListener(this, null);
+        keyboardView.setOnKeyListener(kbl);
+        keyboardView.setOnKeyboardActionListener(kbl);
+      	
+      	keyboardView.setVisibility(View.VISIBLE);
     }
     
     @Override
