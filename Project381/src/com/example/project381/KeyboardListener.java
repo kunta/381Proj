@@ -17,7 +17,9 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 public class KeyboardListener extends KeyboardView implements OnKeyboardActionListener, OnKeyListener {
+	
 	ProjectTextView currentEditText = (ProjectTextView) findViewById(R.id.main_text_input); 
+	
 	public KeyboardListener(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		// TODO Auto-generated constructor stub
@@ -80,22 +82,25 @@ public class KeyboardListener extends KeyboardView implements OnKeyboardActionLi
 	       keyCodeMap.put("35", "b");
 	       keyCodeMap.put("36", "n");
 	       keyCodeMap.put("37", "m");
-	       keyCodeMap.put("-1", " ");
-	       keyCodeMap.put("-2", "ops popup");
-	       keyCodeMap.put("-3", "bracket popup");
+	       keyCodeMap.put("38", "{");
+	       keyCodeMap.put("39", "[");
+	       keyCodeMap.put("40", "(");
+	       keyCodeMap.put("-1", "");
+	       keyCodeMap.put("-2", "");
+	       keyCodeMap.put("-3", "");
 	       keyCodeMap.put("-4", ";");
-	       keyCodeMap.put("-5", "backspace");
+	       keyCodeMap.put("-5", "");
 	       keyCodeMap.put("-6", ",");
 	       keyCodeMap.put("-7", ".");
 	       
 		String c = keyCodeMap.get(String.valueOf(primaryCode));
-		System.out.println(c);
 		       if(!(c == null)){
-		    	   ((ProjectTextView) findViewById(R.id.main_text_input)).append(c);
+		    	   System.out.println(c);
+		    	   //currentEditText.append(c);
 		       }
 		       else{
 		        switch(primaryCode){
-		        case -5:
+		        case -5://backspace
 		         if(currentEditText.getText().toString().length() > 0)
 		          currentEditText.setText(currentEditText.getText().toString().substring(0, currentEditText.getText().toString().length() - 1));
 		        }
