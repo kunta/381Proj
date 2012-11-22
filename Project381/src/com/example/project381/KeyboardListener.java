@@ -85,6 +85,14 @@ public class KeyboardListener extends KeyboardView implements OnKeyboardActionLi
 	       keyCodeMap.put("38", "{");
 	       keyCodeMap.put("39", "[");
 	       keyCodeMap.put("40", "(");
+	       keyCodeMap.put("41", "+");
+	       keyCodeMap.put("42", "-");
+	       keyCodeMap.put("43", "=");
+	       keyCodeMap.put("44", "*");
+	       keyCodeMap.put("45", "/");
+	       keyCodeMap.put("46", "!");
+	       keyCodeMap.put("47", "&");
+	       keyCodeMap.put("48", "|");
 	       keyCodeMap.put("-1", "");
 	       keyCodeMap.put("-2", "");
 	       keyCodeMap.put("-3", "");
