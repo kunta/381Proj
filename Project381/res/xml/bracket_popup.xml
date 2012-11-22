@@ -3,10 +3,9 @@
     android:horizontalGap="0px"
     android:verticalGap="0px">
    <Row>
-    <Key android:keyEdgeFlags="left"/>
-        <Key android:codes="111" android:keyLabel="{"/>
-        <Key android:codes="112" android:keyLabel="["/>
-        <Key android:codes="113" android:keyLabel="("/>
+       <Key android:codes="38" android:keyLabel="{"/>
+       <Key android:codes="39" android:keyLabel="["/>
+       <Key android:codes="40" android:keyLabel="("/>
 
    </Row>
 </Keyboard>
