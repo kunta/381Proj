@@ -57,7 +57,7 @@
     </Row>
 
     <Row android:rowEdgeFlags="bottom">
-        <Key android:codes="-3" android:keyLabel="{([" 
+        <Key android:codes="-3" android:keyLabel="{([" android:popupKeyboard="@xml/bracket_popup" 
                 android:keyWidth="15%p" android:keyEdgeFlags="left"/>
         <Key android:codes="-2" android:keyLabel="Ops" android:keyWidth="15%p"/>
         <Key android:codes="-1" android:keyLabel="|__|"
