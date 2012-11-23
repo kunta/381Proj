@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TabHost;
@@ -65,20 +66,23 @@ public class MainActivity extends Activity {
         keyboardView.setOnKeyboardActionListener(kbl);
         keyboardView.setVisibility(View.INVISIBLE);
         
-      	pview.setOnTouchListener(new OnTouchListener() {
+      	pview.setOnClickListener(new OnClickListener() {
 
-			public boolean onTouch(View v, MotionEvent event) {
+			public void onClick(View v) {
+					//hide softKeyboard
+			     	InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+			        imm.hideSoftInputFromWindow(pview.getWindowToken(), 0);
+			       
+			       //toggle keyboard visibility
 		           if(keyboardView.getVisibility() == View.VISIBLE) {
 		        	   keyboardView.setVisibility(View.INVISIBLE);
-		        	   Log.v(null, "Invisible");
+		        	   Log.v(null, "Keyboard Invisible");
 		           } 
 		           else 
 		           { 
 		        	   keyboardView.setVisibility(View.VISIBLE);
-		        	   Log.v(null, "Visible");
-		           }
-		           Log.v(null, "Fuck");
-		           return true;
+		        	   Log.v(null, "Keyboard Visible");
+		           }		          
 			}
 			
       	});
