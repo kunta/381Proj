@@ -62,6 +62,7 @@ public class MainActivity extends Activity {
         keyboardView.setEnabled(true);
         keyboardView.setPreviewEnabled(true);
         KeyboardListener kbl = new KeyboardListener(this, null);
+        kbl.currentEditText = pview;
         keyboardView.setOnKeyListener(kbl);
         keyboardView.setOnKeyboardActionListener(kbl);
         keyboardView.setVisibility(View.INVISIBLE);
