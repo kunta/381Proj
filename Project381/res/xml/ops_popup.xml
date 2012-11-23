@@ -3,15 +3,15 @@
     android:horizontalGap="0px"
     android:verticalGap="0px">
    <Row android:rowEdgeFlags="top">
-       <Key android:codes="41" android:keyLabel="+"/>
-       <Key android:codes="42" android:keyLabel="-"/>
-       <Key android:codes="43" android:keyLabel="="/>
-       <Key android:codes="44" android:keyLabel="*"/>
-       <Key android:codes="45" android:keyLabel="/"/>
+       <Key android:codes="44" android:keyLabel="+"/>
+       <Key android:codes="45" android:keyLabel="-"/>
+       <Key android:codes="46" android:keyLabel="="/>
+       <Key android:codes="47" android:keyLabel="*"/>
+       <Key android:codes="48" android:keyLabel="/"/>
    </Row>
 	<Row android:rowEdgeFlags="bottom">
-		<Key android:codes="46" android:keyLabel="!"/>
-		<Key android:codes="47" android:keyLabel="&amp;"/>
-		<Key android:codes="48" android:keyLabel="|"/>
+		<Key android:codes="49" android:keyLabel="!"/>
+		<Key android:codes="50" android:keyLabel="&amp;"/>
+		<Key android:codes="51" android:keyLabel="|"/>
 	</Row>
 </Keyboard>
