@@ -51,7 +51,7 @@
         <Key android:codes="35" android:keyLabel="b"/>
         <Key android:codes="36" android:keyLabel="n"/>
         <Key android:codes="37" android:keyLabel="m"/>
-                <Key android:codes="60" android:keyLabel="loops" android:popupKeyboard="@xml/loop_popup" 
+                <Key android:codes="60" android:keyLabel="loops" android:popupKeyboard="@xml/popup_loop" 
                 android:keyWidth="15%p" android:keyEdgeFlags="right"/>
         
         <Key android:codes="-5" android:keyLabel="Back"
@@ -60,10 +60,10 @@
     </Row>
 
     <Row android:rowEdgeFlags="bottom">
-        <Key android:codes="-3" android:keyLabel="{([" android:popupKeyboard="@xml/bracket_popup" 
+        <Key android:codes="-3" android:keyLabel="{([" android:popupKeyboard="@xml/popup_bracket" 
                 android:keyWidth="15%p" android:keyEdgeFlags="left"/>
         <Key android:codes="-2" android:keyLabel="Ops" android:keyWidth="15%p" 
-            android:popupKeyboard="@xml/ops_popup"/>
+            android:popupKeyboard="@xml/popup_ops"/>
         <Key android:codes="-1" android:keyLabel="|__|"
                 android:keyWidth="25%p" />
         <Key android:codes="-4" android:keyLabel=";"
