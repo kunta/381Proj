@@ -56,6 +56,8 @@ public final class R {
         public static final int AppTheme=0x7f060000;
     }
     public static final class xml {
-        public static final int keyboard=0x7f040000;
+        public static final int bracket_popup=0x7f040000;
+        public static final int keyboard=0x7f040001;
+        public static final int ops_popup=0x7f040002;
     }
 }

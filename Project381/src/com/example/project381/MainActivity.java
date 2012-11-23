@@ -6,10 +6,13 @@ import android.os.Bundle;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
@@ -17,20 +20,28 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity {
 	
-//    final ProjectTextView pview = (ProjectTextView) findViewById(R.id.main_text_input);
-//    final TextView lineNumbers = (TextView) findViewById(R.id.lineNumbers);
+    ProjectTextView pview;
+    TextView lineNumbers;
+    KeyboardView keyboardView;
+    
+    String text;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         
-        final ProjectTextView pview = (ProjectTextView) findViewById(R.id.main_text_input);
-        final TextView lineNumbers = (TextView) findViewById(R.id.lineNumbers);
+    	super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main); 
+    	
+        pview = (ProjectTextView) findViewById(R.id.main_text_input);
+        
+        InputMethodManager inputMethod = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputMethod.hideSoftInputFromWindow(pview.getWindowToken(), 0);
+        
+        lineNumbers = (TextView) findViewById(R.id.lineNumbers);
+       
         Menu menu = (Menu) findViewById(R.id.file);
         
-        MenuItem item1 = (MenuItem) findViewById(R.id.delete);     
-        
-    	super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);  
+        MenuItem item1 = (MenuItem) findViewById(R.id.delete);      
         
         TabHost tabHost = (TabHost) findViewById(R.id.tabhost);
         tabHost.setup();
@@ -44,7 +55,7 @@ public class MainActivity extends Activity {
         aBar.setDisplayShowTitleEnabled(false);
         aBar.setDisplayShowHomeEnabled(false);
         
-        KeyboardView keyboardView = (KeyboardView) findViewById(R.id.keyboardView);
+        keyboardView = (KeyboardView) findViewById(R.id.keyboardView);
         Keyboard keyboard = new Keyboard(this, R.xml.keyboard);
         keyboardView.setKeyboard(keyboard);
         keyboardView.setEnabled(true);
@@ -52,8 +63,26 @@ public class MainActivity extends Activity {
         KeyboardListener kbl = new KeyboardListener(this, null);
         keyboardView.setOnKeyListener(kbl);
         keyboardView.setOnKeyboardActionListener(kbl);
-      	
-      	keyboardView.setVisibility(View.VISIBLE);
+        keyboardView.setVisibility(View.INVISIBLE);
+        
+      	pview.setOnTouchListener(new OnTouchListener() {
+
+			public boolean onTouch(View v, MotionEvent event) {
+		           if(keyboardView.getVisibility() == View.VISIBLE) {
+		        	   keyboardView.setVisibility(View.INVISIBLE);
+		        	   Log.v(null, "Invisible");
+		           } 
+		           else 
+		           { 
+		        	   keyboardView.setVisibility(View.VISIBLE);
+		        	   Log.v(null, "Visible");
+		           }
+		           Log.v(null, "Fuck");
+		           return true;
+			}
+			
+      	});
+        
     }
     
     @Override
@@ -78,6 +107,25 @@ public class MainActivity extends Activity {
     		System.out.println(i);
     	}
     	view.setText(lineNumbers);
+    }
+    
+    public boolean onOptionsItemSelected(MenuItem item) {
+    	switch(item.getItemId()) {
+    	case R.id.new_file:
+    	case R.id.open:
+    	case R.id.save:
+    	case R.id.save_all:
+    	case R.id.save_as:
+    	case R.id.numbers:
+    		if(lineNumbers.isShown()) {
+    			lineNumbers.setVisibility(View.INVISIBLE);
+    			item.setChecked(false);
+    		} else {
+    			lineNumbers.setVisibility(View.VISIBLE);
+    			item.setChecked(true);
+    		}
+    	}
+    	return true;
     }
     
 }
