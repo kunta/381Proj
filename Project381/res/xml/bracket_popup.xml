@@ -6,6 +6,9 @@
        <Key android:codes="38" android:keyLabel="{"/>
        <Key android:codes="39" android:keyLabel="["/>
        <Key android:codes="40" android:keyLabel="("/>
+       <Key android:codes="41" android:keyLabel="{}"/>
+       <Key android:codes="42" android:keyLabel="[]"/>
+       <Key android:codes="43" android:keyLabel="()"/>
 
    </Row>
 </Keyboard>
