@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
@@ -18,26 +19,11 @@ import android.widget.EditText;
 
 public class KeyboardListener extends KeyboardView implements OnKeyboardActionListener, OnKeyListener {
 	
-	ProjectTextView currentEditText = (ProjectTextView) findViewById(R.id.main_text_input); 
+	ProjectTextView currentEditText; 
 	
 	public KeyboardListener(Context context, AttributeSet attrs) {
 		super(context, attrs);
-		// TODO Auto-generated constructor stub
 	}
-	
-    private void toggleKeyboardVisibility() {
-           KeyboardView keyboardView = (KeyboardView) findViewById(R.id.keyboardView);
-           int visibility = keyboardView.getVisibility();
-           switch (visibility) {
-            case View.VISIBLE:
-             keyboardView.setVisibility(View.GONE);
-             break;
-            case View.GONE:
-            case View.INVISIBLE:
-             keyboardView.setVisibility(View.VISIBLE);
-             break;
-           }
-    }
 
 	public boolean onKey(View v, int keyCode, KeyEvent event) {
 		return false;
@@ -85,42 +71,62 @@ public class KeyboardListener extends KeyboardView implements OnKeyboardActionLi
 	       keyCodeMap.put("38", "{");
 	       keyCodeMap.put("39", "[");
 	       keyCodeMap.put("40", "(");
-	       keyCodeMap.put("41", "+");
-	       keyCodeMap.put("42", "-");
-	       keyCodeMap.put("43", "=");
-	       keyCodeMap.put("44", "*");
-	       keyCodeMap.put("45", "/");
-	       keyCodeMap.put("46", "!");
-	       keyCodeMap.put("47", "&");
-	       keyCodeMap.put("48", "|");
-	       keyCodeMap.put("61", "do");
-	       keyCodeMap.put("62", "for");
-	       keyCodeMap.put("63", "while");
+	       keyCodeMap.put("41", "{}");
+	       keyCodeMap.put("42", "[]");
+	       keyCodeMap.put("43", "()");
+	       keyCodeMap.put("44", "+");
+	       keyCodeMap.put("45", "-");
+	       keyCodeMap.put("46", "=");
+	       keyCodeMap.put("47", "*");
+	       keyCodeMap.put("48", "/");
+	       keyCodeMap.put("49", "!");
+	       keyCodeMap.put("50", "&");
+	       keyCodeMap.put("51", "|");
+	       keyCodeMap.put("61", "do {\n     \n}while()");
+	       keyCodeMap.put("62", "for() {\n     \n}");
+	       keyCodeMap.put("63", "while() {\n     \n}");
 	       
-	       keyCodeMap.put("-1", "");
+	       keyCodeMap.put("-1", " ");
 	       keyCodeMap.put("-2", "");
 	       keyCodeMap.put("-3", "");
 	       keyCodeMap.put("-4", ";");
-	       keyCodeMap.put("-5", "");
+	       keyCodeMap.put("-5", null);
 	       keyCodeMap.put("-6", ",");
 	       keyCodeMap.put("-7", ".");
 	       
-		String c = keyCodeMap.get(String.valueOf(primaryCode));
-		       if(!(c == null)){
-		    	   System.out.println(c);
-		    	   //currentEditText.append(c);
+    	   int start = currentEditText.getSelectionStart();
+	       int end = currentEditText.getSelectionEnd();
+	       
+	       String c = keyCodeMap.get(String.valueOf(primaryCode));
+		       if(!(c == null)){ 
+    			   currentEditText.setText(currentEditText.getText().toString().substring(0, start) + c + currentEditText.getText().toString().substring(end,currentEditText.getText().toString().length()));
+    			   currentEditText.setSelection(start +1 );
+		    	   start = currentEditText.getSelectionEnd();
+			       end = currentEditText.getSelectionStart();
+			       
+		    	   switch(primaryCode){
+		    	   case 61: currentEditText.setSelection(start + 7); break;
+		    	   case 62: currentEditText.setSelection(start +10 ); break;
+		    	   case 63: currentEditText.setSelection(start +12); break;
+		    		   
+		    		   
+		    	   }
 		       }
-		       else{
-		        switch(primaryCode){
-		        case -5://backspace
-		         if(currentEditText.getText().toString().length() > 0)
-		          currentEditText.setText(currentEditText.getText().toString().substring(0, currentEditText.getText().toString().length() - 1));
-		        }
-		       }
-
-
-		
+			   else{
+		    	   if(primaryCode == -5){
+		    		   if(end - start > 0 ) { //delete selection
+		    			   currentEditText.setText(currentEditText.getText().toString().substring(0, start) + currentEditText.getText().toString().substring(end,currentEditText.getText().toString().length()));
+		    			   currentEditText.setSelection(start -1);
+		    		   }
+		    		   else if(currentEditText.getText().toString().length() > 0 && start > 0) {
+		    			   currentEditText.setText(currentEditText.getText().toString().substring(0, start -1) + currentEditText.getText().toString().substring(start, currentEditText.getText().toString().length()));
+		    			   currentEditText.setSelection(start -1);
+		    		   }
+		    	   }
+			   }		       
+		       
 	}
+
 
 	
 	public void onPress(int primaryCode) {
