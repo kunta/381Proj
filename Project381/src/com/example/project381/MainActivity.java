@@ -67,6 +67,15 @@ public class MainActivity extends Activity {
         keyboardView.setOnKeyboardActionListener(kbl);
         keyboardView.setVisibility(View.INVISIBLE);
         
+        pview.setOnTouchListener(new OnTouchListener() {
+
+			public boolean onTouch(View arg0, MotionEvent arg1) {
+				InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+		        imm.hideSoftInputFromWindow(pview.getWindowToken(), 0);
+				return false;
+			}
+        	
+        });
       	pview.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
