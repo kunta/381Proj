@@ -51,6 +51,9 @@
         <Key android:codes="35" android:keyLabel="b"/>
         <Key android:codes="36" android:keyLabel="n"/>
         <Key android:codes="37" android:keyLabel="m"/>
+                <Key android:codes="60" android:keyLabel="loops" android:popupKeyboard="@xml/loop_popup" 
+                android:keyWidth="15%p" android:keyEdgeFlags="right"/>
+        
         <Key android:codes="-5" android:keyLabel="Back"
                 android:keyWidth="15%p" android:keyEdgeFlags="right"
                 android:isRepeatable="true"/>
