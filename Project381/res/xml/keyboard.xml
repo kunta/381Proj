@@ -57,13 +57,19 @@
     </Row>
 
     <Row android:rowEdgeFlags="bottom">
-        <Key android:codes="-3" android:keyLabel="\@" android:horizontalGap="20%p"
+        <Key android:codes="-3" android:keyLabel="{([" android:popupKeyboard="@xml/bracket_popup" 
                 android:keyWidth="15%p" android:keyEdgeFlags="left"/>
-        <Key android:codes="-2" android:keyLabel=".com" android:keyWidth="15%p"/>
-        <Key android:codes="-1" android:keyLabel="-"
-                android:keyWidth="15%p" />
-        <Key android:codes="-4" android:keyLabel="."
+        <Key android:codes="-2" android:keyLabel="Ops" android:keyWidth="15%p" 
+            android:popupKeyboard="@xml/ops_popup"/>
+        <Key android:codes="-1" android:keyLabel="|__|"
+                android:keyWidth="25%p" />
+        <Key android:codes="-4" android:keyLabel=";"
+                android:keyWidth="15%p"/>
+        <Key android:codes="-6" android:keyLabel=","
+                android:keyWidth="15%p"/>
+        <Key android:codes="-7" android:keyLabel="."
                 android:keyWidth="15%p" android:keyEdgeFlags="right"/>
     </Row>
 </Keyboard>
+
 
