@@ -8,10 +8,13 @@
        <Key android:codes="46" android:keyLabel="="/>
        <Key android:codes="47" android:keyLabel="*"/>
        <Key android:codes="48" android:keyLabel="/"/>
+       <Key android:codes="49" android:keyLabel="!"/>
    </Row>
 	<Row android:rowEdgeFlags="bottom">
-		<Key android:codes="49" android:keyLabel="!"/>
 		<Key android:codes="50" android:keyLabel="&amp;"/>
 		<Key android:codes="51" android:keyLabel="|"/>
+		<Key android:codes="52" android:keyLabel="&lt;"/>
+		<Key android:codes="53" android:keyLabel="&gt;"/>
+		<Key android:codes="54" android:keyLabel="%"/>
 	</Row>
 </Keyboard>

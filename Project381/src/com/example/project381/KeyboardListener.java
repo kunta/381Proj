@@ -68,9 +68,7 @@ public class KeyboardListener extends KeyboardView implements OnKeyboardActionLi
 	       keyCodeMap.put("35", "b");
 	       keyCodeMap.put("36", "n");
 	       keyCodeMap.put("37", "m");
-	       keyCodeMap.put("38", "{");
-	       keyCodeMap.put("39", "[");
-	       keyCodeMap.put("40", "(");
+	       keyCodeMap.put("40", "<>");
 	       keyCodeMap.put("41", "{}");
 	       keyCodeMap.put("42", "[]");
 	       keyCodeMap.put("43", "()");
@@ -82,17 +80,23 @@ public class KeyboardListener extends KeyboardView implements OnKeyboardActionLi
 	       keyCodeMap.put("49", "!");
 	       keyCodeMap.put("50", "&");
 	       keyCodeMap.put("51", "|");
-	       keyCodeMap.put("61", "do {\n     \n}while()");
-	       keyCodeMap.put("62", "for() {\n     \n}");
-	       keyCodeMap.put("63", "while() {\n     \n}");
+	       keyCodeMap.put("52", "<");
+	       keyCodeMap.put("53", ">");
+	       keyCodeMap.put("54", "%");
+	       keyCodeMap.put("61", "do {\n}while()");
+	       keyCodeMap.put("62", "for() {\n}");
+	       keyCodeMap.put("63", "while() {\n}");
+	       keyCodeMap.put("64", "if() {\n}else{\n}");
 	       
 	       keyCodeMap.put("-1", " ");
-	       keyCodeMap.put("-2", "");
-	       keyCodeMap.put("-3", "");
+	       keyCodeMap.put("-2", null);
+	       keyCodeMap.put("-3", null);
 	       keyCodeMap.put("-4", ";");
 	       keyCodeMap.put("-5", null);
 	       keyCodeMap.put("-6", ",");
 	       keyCodeMap.put("-7", ".");
+	       keyCodeMap.put("-8", "\t");
+	       keyCodeMap.put("-9", "\n");
 	       
     	   int start = currentEditText.getSelectionStart();
 	       int end = currentEditText.getSelectionEnd();
@@ -105,18 +109,27 @@ public class KeyboardListener extends KeyboardView implements OnKeyboardActionLi
 			       end = currentEditText.getSelectionStart();
 			       
 		    	   switch(primaryCode){
-		    	   case 61: currentEditText.setSelection(start + 7); break;
-		    	   case 62: currentEditText.setSelection(start +10 ); break;
-		    	   case 63: currentEditText.setSelection(start +12); break;
+		    	   case 61: currentEditText.setSelection(start + 11); break;
+		    	   case 62: currentEditText.setSelection(start +3 ); break;
+		    	   case 63: currentEditText.setSelection(start +5); break;
+		    	   case 64: currentEditText.setSelection(start +2); break;
 		    		   
 		    		   
 		    	   }
 		       }
 			   else{
+				   if(primaryCode == -10){
+					   if(start > 0)
+						   currentEditText.setSelection(start -1);
+				   }
+				   else if(primaryCode == -11)
+					   if(end < currentEditText.getText().toString().length() )
+						   currentEditText.setSelection(end + 1);
+						   
 		    	   if(primaryCode == -5){
 		    		   if(end - start > 0 ) { //delete selection
 		    			   currentEditText.setText(currentEditText.getText().toString().substring(0, start) + currentEditText.getText().toString().substring(end,currentEditText.getText().toString().length()));
-		    			   currentEditText.setSelection(start -1);
+		    			   currentEditText.setSelection(start);
 		    		   }
 		    		   else if(currentEditText.getText().toString().length() > 0 && start > 0) {
 		    			   currentEditText.setText(currentEditText.getText().toString().substring(0, start -1) + currentEditText.getText().toString().substring(start, currentEditText.getText().toString().length()));
