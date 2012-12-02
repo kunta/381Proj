@@ -18,6 +18,8 @@ public class ProjectTextView extends AutoCompleteTextView {
 	private String fileName = "untitled";
 	private Language language;
 	
+	boolean lineNumbersEnabled;
+	
 	enum Language {
 		C,
 		JAVA,

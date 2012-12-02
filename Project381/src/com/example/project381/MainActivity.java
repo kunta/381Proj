@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
@@ -22,17 +24,23 @@ import android.widget.TextView;
 public class MainActivity extends Activity {
 	
     ProjectTextView pview;
+    ProjectTextView openFiles[];
+    
     TextView lineNumbers;
     KeyboardView keyboardView;
     
     String text;
 	
+    static DatabaseHandler db;
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         
     	super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); 
     	
+        db = new DatabaseHandler(this);
+        
         pview = (ProjectTextView) findViewById(R.id.main_text_input);
         
         InputMethodManager inputMethod = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -44,13 +52,8 @@ public class MainActivity extends Activity {
         
         MenuItem item1 = (MenuItem) findViewById(R.id.delete);      
         
-        TabHost tabHost = (TabHost) findViewById(R.id.tabhost);
-        tabHost.setup();
-        
-        TabSpec mainSpec = tabHost.newTabSpec("Main");
-        mainSpec.setIndicator("main");
-        mainSpec.setContent(R.id.main_text_input);
-        tabHost.addTab(mainSpec);
+        Button fileNames = (Button) findViewById(R.id.fileNames);
+        fileNames.setText(pview.getFileName());
         
         ActionBar aBar = getActionBar();
         aBar.setDisplayShowTitleEnabled(false);
@@ -126,6 +129,8 @@ public class MainActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
     	switch(item.getItemId()) {
     	case R.id.new_file:
+    		Intent createANewFile = new Intent(this, CreateNewFile.class);
+    		startActivity(createANewFile);
     	case R.id.open:
     	case R.id.save:
     	case R.id.save_all:

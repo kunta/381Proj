@@ -17,6 +17,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String DICTIONARY_TABLE_CREATE = "CREATE TABLE " + DICTIONARY_TABLE_NAME +
 			"(" + KEY_FILE_NAME + " TEXT" + ")";
 	
+	public DatabaseHandler(Context context) {
+        super(context, DICTIONARY_TABLE_NAME, null, DATABASE_VERSION);
+    }
+	
 	public DatabaseHandler(Context context, String name, CursorFactory factory, int version) {
 		super(context, name, factory, version);
 		// TODO Auto-generated constructor stub
@@ -29,8 +33,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		// TODO Auto-generated method stub
-		
+		db.execSQL("DROP TABLE IF EXISTS " + DICTIONARY_TABLE_NAME);
+		onCreate(db);
 	}
 
 	public void addDocument(ProjectTextView document) {
@@ -41,6 +45,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		
 		db.insert(DICTIONARY_TABLE_NAME, null, values);
 		db.close();
+	}
+	
+	public void deleteDocument(ProjectTextView document) {
+		SQLiteDatabase db = this.getWritableDatabase();
+		
+		db.delete(DICTIONARY_TABLE_NAME, KEY_FILE_NAME + " = ?", new String[] { String.valueOf(document.getFileName()) } );
 	}
 	
 }
