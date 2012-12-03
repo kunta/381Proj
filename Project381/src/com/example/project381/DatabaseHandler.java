@@ -37,7 +37,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		onCreate(db);
 	}
 
-	public void addDocument(ProjectTextView document) {
+	public void addDocument(Document document) {
 		SQLiteDatabase db = this.getWritableDatabase();
 		
 		ContentValues values = new ContentValues();
@@ -47,7 +47,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.close();
 	}
 	
-	public void deleteDocument(ProjectTextView document) {
+	public void deleteDocument(Document document) {
 		SQLiteDatabase db = this.getWritableDatabase();
 		
 		db.delete(DICTIONARY_TABLE_NAME, KEY_FILE_NAME + " = ?", new String[] { String.valueOf(document.getFileName()) } );

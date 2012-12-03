@@ -23,33 +23,38 @@ public final class R {
     public static final class id {
         public static final int cancelButton=0x7f080005;
         public static final int createButton=0x7f080006;
-        public static final int delete=0x7f080015;
+        public static final int delete=0x7f080019;
         public static final int editText1=0x7f080004;
-        public static final int file=0x7f08000f;
+        public static final int file=0x7f080013;
         public static final int fileNames=0x7f080000;
-        public static final int help=0x7f080018;
+        public static final int help=0x7f08001c;
         public static final int keyboardView=0x7f080003;
         public static final int lineNumbers=0x7f080001;
         public static final int main_text_input=0x7f080002;
-        public static final int menu_settings=0x7f08000e;
-        public static final int new_file=0x7f080010;
-        public static final int numbers=0x7f080017;
-        public static final int open=0x7f080011;
+        public static final int menu_settings=0x7f080012;
+        public static final int new_file=0x7f080014;
+        public static final int numbers=0x7f08001b;
+        public static final int open=0x7f080015;
         public static final int radioButton1=0x7f08000d;
         public static final int radioButton2=0x7f08000c;
         public static final int radioButton3=0x7f08000b;
         public static final int radioButton4=0x7f08000a;
         public static final int radioButton5=0x7f080009;
         public static final int radioGroup1=0x7f080008;
-        public static final int save=0x7f080012;
-        public static final int save_all=0x7f080014;
-        public static final int save_as=0x7f080013;
+        public static final int save=0x7f080016;
+        public static final int save_all=0x7f080018;
+        public static final int save_as=0x7f080017;
+        public static final int tableRow1=0x7f08000e;
+        public static final int tableRow2=0x7f08000f;
+        public static final int tableRow3=0x7f080010;
+        public static final int tableRow4=0x7f080011;
         public static final int textView1=0x7f080007;
-        public static final int view=0x7f080016;
+        public static final int view=0x7f08001a;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
         public static final int new_document_view=0x7f030001;
+        public static final int open_files_view=0x7f030002;
     }
     public static final class menu {
         public static final int activity_main=0x7f070000;

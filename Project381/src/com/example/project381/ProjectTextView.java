@@ -15,7 +15,6 @@ import android.widget.TextView;
 
 public class ProjectTextView extends AutoCompleteTextView {
 
-	private String fileName = "untitled";
 	private Language language;
 	
 	boolean lineNumbersEnabled;
@@ -249,14 +248,6 @@ public class ProjectTextView extends AutoCompleteTextView {
     
 	public void setLanguage(Language l) {
 		language = l;
-	}
-	
-	public String getFileName() {
-		return fileName;
-	}
-	
-	public void setFileName(String fN) {
-		fileName = fN;
 	}
 	
 }

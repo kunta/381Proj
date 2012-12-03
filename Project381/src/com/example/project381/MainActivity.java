@@ -1,5 +1,7 @@
 package com.example.project381;
 
+import java.util.ArrayList;
+
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
 import android.os.Bundle;
@@ -24,12 +26,14 @@ import android.widget.TextView;
 public class MainActivity extends Activity {
 	
     ProjectTextView pview;
-    ProjectTextView openFiles[];
+    ArrayList<Document> openFiles;
     
     TextView lineNumbers;
     KeyboardView keyboardView;
     
     String text;
+    
+    static int fileIndex;
 	
     static DatabaseHandler db;
     
@@ -39,9 +43,16 @@ public class MainActivity extends Activity {
     	super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); 
     	
+        fileIndex = 0;
+        
         db = new DatabaseHandler(this);
         
+        openFiles = new ArrayList<Document>();
+        openFiles.add(new Document("new_file",".java"));
+        
         pview = (ProjectTextView) findViewById(R.id.main_text_input);
+        pview.setText((CharSequence) openFiles.get(0).getText());
+      //  pview.setDropDownHeight(4);
         
         InputMethodManager inputMethod = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         inputMethod.hideSoftInputFromWindow(pview.getWindowToken(), 0);
@@ -53,7 +64,7 @@ public class MainActivity extends Activity {
         MenuItem item1 = (MenuItem) findViewById(R.id.delete);      
         
         Button fileNames = (Button) findViewById(R.id.fileNames);
-        fileNames.setText(pview.getFileName());
+        fileNames.setText(openFiles.get(fileIndex).getFileName());
         
         ActionBar aBar = getActionBar();
         aBar.setDisplayShowTitleEnabled(false);
@@ -133,6 +144,7 @@ public class MainActivity extends Activity {
     		startActivity(createANewFile);
     	case R.id.open:
     	case R.id.save:
+    		
     	case R.id.save_all:
     	case R.id.save_as:
     	case R.id.numbers:
